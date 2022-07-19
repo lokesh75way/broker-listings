@@ -1,0 +1,24 @@
+{
+  "name": "broker-listings",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "chart.js": "^2.9.4",
+    "cookie-parser": "~1.4.4",
+    "datatables": "^1.10.18",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.1",
+    "express": "~4.16.1",
+    "express-handlebars": "^6.0.6",
+    "http-errors": "~1.6.3",
+    "jquery": "^2.2.4",
+    "moment": "^2.29.4",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3"
+  }
+}

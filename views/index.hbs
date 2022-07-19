@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="./css/jquery.dataTables.min.css"></link>
+     <link rel="stylesheet" href="./css/bootstrap.min.css">
+     </link>
+     <title>{{title}}</title>
+     <style type="text/css">
+          #chart {
+               margin: 0 auto;
+               margin-top: 30px;
+          }
+          .container {
+               margin-top: 50px;
+               margin-bottom: 30px;
+          }
+     </style>
+</head>
+
+<body>
+     <div class="container">
+          <h3 class="text-center">Month By Listing - Line Chart Representation</h3>
+          <canvas id="chart"></canvas>
+          <hr>
+          <h3 class="text-center">Full Listings - Data Table Representation</h3>
+          <table class="table table-bordered">
+               <thead>
+                    <tr>
+                         <th>Listing Id</th>
+                         <th>Month</th>
+                         <th>Listing Date</th>
+                         <th>Broker</th>
+                         <th>Revenue</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    {{#each table}}
+                    <tr>
+                         <td>{{this.listing_id}}</td>
+                         <td>{{this.month}}</td>
+                         <td>{{formatDateTime this.listing_date 'll'}}</td>
+                         <td>{{this.broker}}</td>
+                         <td>{{this.revenue}}</td>
+                    </tr>
+                    {{/each}}
+               </tbody>
+          </table>
+     </div>
+     <script src="./js/jquery.min.js"></script>
+     <script src="./js/Chart.min.js"></script>
+     <script src="./js/bootstrap.min.js"></script>
+     <script src="./js/jquery.dataTables.min.js"></script>
+     <script type="text/javascript">
+          // Initializing Line Chart
+          const ctx = $('#chart');
+          new Chart(ctx, {
+               type: 'line',
+               data: {
+                    labels: {{{ labels }}},
+                    datasets: {{{ chart }}}
+              }
+         });
+
+          // Initializing Data Table
+          $(document).ready(function () {
+               $('table').dataTable()
+          });
+     </script>
+</body>
+
+</html>
